@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_end.c                                           :+:      :+:    :+:   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/22 20:14:49 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/12/14 23:59:09 by hmartzol         ###   ########.fr       */
+/*   Created: 2016/12/13 18:16:22 by hmartzol          #+#    #+#             */
+/*   Updated: 2016/12/13 18:23:42 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_end(int r)
+size_t	ft_strcspn(const char *str, const char *reject)
 {
-	if (ft_global_log(LOG_SET | LOG_STORE, "Log ended\n") == NULL)
-		ft_error(ERROR_ERRNO, 0);
-	ft_global_log(LOG_END, NULL);
-	ft_env_clear();
-	exit(r);
+	size_t	i;
+
+	i = 0;
+	while (!ft_isinset(str[i], reject))
+		++i;
+	return (i);
 }

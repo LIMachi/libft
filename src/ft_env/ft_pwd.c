@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_end.c                                           :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/22 20:14:49 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/12/14 23:59:09 by hmartzol         ###   ########.fr       */
+/*   Created: 2016/12/13 17:30:12 by hmartzol          #+#    #+#             */
+/*   Updated: 2016/12/13 17:38:59 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_end(int r)
+/*
+** return the PWD stored in env, or NULL if PWD is not set
+** warning: the returned value is a direct pointer to env PWD, any change on
+** the memory pointed by this pointer will change the env
+*/
+
+char	*ft_pwd(void)
 {
-	if (ft_global_log(LOG_SET | LOG_STORE, "Log ended\n") == NULL)
-		ft_error(ERROR_ERRNO, 0);
-	ft_global_log(LOG_END, NULL);
-	ft_env_clear();
-	exit(r);
+	char	*out;
+
+	out = ft_getenv("PWD");
+	if (out != NULL)
+		return (out + 4 * sizeof(char));
+	return (NULL);
 }

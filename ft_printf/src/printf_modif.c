@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_end.c                                           :+:      :+:    :+:   */
+/*   printf_modif.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/22 20:14:49 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/12/14 23:59:09 by hmartzol         ###   ########.fr       */
+/*   Created: 2016/11/23 05:26:36 by hmartzol          #+#    #+#             */
+/*   Updated: 2016/11/23 05:26:39 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "printf.h"
 
-void	ft_end(int r)
+int		prf_modif(char *form, int i, t_env *env)
 {
-	if (ft_global_log(LOG_SET | LOG_STORE, "Log ended\n") == NULL)
-		ft_error(ERROR_ERRNO, 0);
-	ft_global_log(LOG_END, NULL);
-	ft_env_clear();
-	exit(r);
+	if (form[i] == 'h' && form[i + 1] == 'h')
+		env->modif = 1;
+	else if (form[i] == 'h')
+		env->modif = 2;
+	else if (form[i] == 'l' || form[i] == 'j' || form[i] == 'z')
+		env->modif = 3;
+	while (char_chr(form[i], "hljz") != -1)
+		++i;
+	return (i);
 }
