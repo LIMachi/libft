@@ -6,20 +6,20 @@
 /*   By: lee <lee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 18:25:04 by lee               #+#    #+#             */
-/*   Updated: 2017/03/17 05:26:03 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:41:37 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-/*
-#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#if 0
+
+# if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 
 size_t	ft_evaluate_u128_size(__uint128_t v)
 {
-	size_t	size;
+	size_t				size;
 	static const t_i128	p[39] = {{{1, 0}}, {{10, 0}}, {{100, 0}}, {{1000, 0}},
-
 	{{10000, 0}}, {{100000, 0}}, {{1000000, 0}}, {{10000000, 0}}, {{100000000,
 	0}}, {{1000000000, 0}}, {{10000000000, 0}}, {{100000000000, 0}},
 	{{1000000000000, 0}}, {{10000000000000, 0}}, {{100000000000000, 0}},
@@ -36,19 +36,19 @@ size_t	ft_evaluate_u128_size(__uint128_t v)
 	{{0x2b878fe800000000, 0x13426172c74d82}}, {{0xb34b9f1000000000,
 	0xc097ce7bc90715}}, {{0xf436a000000000, 0x785ee10d5da46d9}},
 	{{0x98a224000000000, 0x4b3b4ca85a86c47a}}};
+
 	size = 0;
 	while (v > p[i].u128)
 		++size;
 	return (size ? size : 1);
 }
 
-#else
+# else
 
 size_t	ft_evaluate_u128_size(__uint128_t v)
 {
-	size_t	size;
+	size_t				size;
 	static const t_i128	p[39] = {{{0, 1}}, {{0, 10}}, {{0, 100}}, {{0, 1000}},
-
 	{{0, 10000}}, {{0, 100000}}, {{0, 1000000}}, {{0, 10000000}}, {{0,
 	100000000}}, {{0, 1000000000}}, {{0, 10000000000}}, {{0, 100000000000}},
 	{{0, 1000000000000}}, {{0, 10000000000000}}, {{0, 100000000000000}}, {{0,
@@ -65,14 +65,16 @@ size_t	ft_evaluate_u128_size(__uint128_t v)
 	0x2b878fe800000000}}, {{0xc097ce7bc90715, 0xb34b9f1000000000}},
 	{{0x785ee10d5da46d9, 0xf436a000000000}}, {{0x4b3b4ca85a86c47a,
 	0x98a224000000000}}};
+
 	size = 0;
 	while (v > p[i].u128)
 		++size;
 	return (size ? size : 1);
 }
 
-#endif
-*/
+# endif
+
+#else
 
 size_t	ft_evaluate_u128_size(__uint128_t v)
 {
@@ -85,3 +87,5 @@ size_t	ft_evaluate_u128_size(__uint128_t v)
 		++l;
 	return (l);
 }
+
+#endif

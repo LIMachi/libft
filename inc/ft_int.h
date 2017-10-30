@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 20:28:37 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/03/17 03:07:22 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:54:05 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # ifndef __CHAR_BIT__
 #  if FT_INT_USE_LOGICAL
-#  	define __CHAR_BIT__ 0xFF
+#   define __CHAR_BIT__ 0xFF
 #  else
 #   define __CHAR_BIT__ ((1 << (__SIZEOF_CHAR__ << 3)) - 1)
 #  endif

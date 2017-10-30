@@ -6,13 +6,14 @@
 /*   By: lee <lee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 18:24:20 by lee               #+#    #+#             */
-/*   Updated: 2017/03/17 05:28:06 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:42:03 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-/*
+#if 0
+
 size_t	ft_evaluate_i128_size(__int128_t v)
 {
 	if (v == 0)
@@ -23,9 +24,10 @@ size_t	ft_evaluate_i128_size(__int128_t v)
 			return (2);
 		return (1 + ft_evaluate_u128_size(-v));
 	}
-	return ft_evaluate_u128_size(v);
+	return (ft_evaluate_u128_size(v));
 }
-*/
+
+#else
 
 size_t	ft_evaluate_i128_size(__int128_t v)
 {
@@ -50,3 +52,5 @@ size_t	ft_evaluate_i128_size(__int128_t v)
 		++l;
 	return (l);
 }
+
+#endif

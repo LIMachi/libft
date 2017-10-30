@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:22:12 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:28:53 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -763,8 +763,8 @@ typedef struct			s_xorshift1024star
 typedef struct			s_llist
 {
 	void				*data;
-	t_list				*next;
-	size_t				content_size;
+	struct s_llist		*next;
+	size_t				data_size;
 	char				*label;
 }						t_llist;
 

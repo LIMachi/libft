@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 10:51:56 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/23 11:42:43 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:34:59 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 ** and return[2] is the "list" returned by ft_hashtable_get_all
 */
 
-static t_list	**sf_park(t_llist *node, char *label)
+static t_llist	**sf_park(t_llist *node, char *label)
 {
 	static t_llist		*nodes[4];
 
-	ft_bzero(nodes, sizeof(*t_llist) * 4);
+	ft_bzero(nodes, sizeof(t_llist*) * 4);
 	while (node != NULL)
 	{
 		if (ft_strcmp(node->label, label))
@@ -48,9 +48,9 @@ static t_list	**sf_park(t_llist *node, char *label)
 		node = node->next;
 	}
 	if (nodes[0] == NULL)
-		nodes[0] == nodes[2];
+		nodes[0] = nodes[2];
 	else
-		nodes[1]->next == nodes[2];
+		nodes[1]->next = nodes[2];
 	return (nodes);
 }
 
@@ -67,10 +67,10 @@ t_list			*ft_hashtable_get_all(t_hashtable *table, char *label)
 		index = ft_default_hasher(label, table->size);
 	if (index >= table->size)
 		return (NULL);
-	if ((node = table->data[index]) == NULL)
+	if ((table->data[index]) == NULL)
 		return (NULL);
-	if ((nodes = sf_park(node, label)) == NULL)
+	if ((nodes = sf_park(table->data[index], label)) == NULL)
 		return (NULL);
-	table->data[index] == nodes[0];
+	table->data[index] = nodes[0];
 	return ((t_list*)nodes[2]);
 }

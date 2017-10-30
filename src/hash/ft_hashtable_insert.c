@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 09:25:27 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/23 11:47:27 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:35:54 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ size_t			ft_hashtable_insert(t_hashtable *table,
 		return (-1);
 	if ((node = ft_malloc(sizeof(t_llist))) == NULL)
 		return (-1);
-	*node = (t_llist){.data = data, .next = NULL, .content_size = size,
+	*node = (t_llist){.data = data, .next = NULL, .data_size = data_size,
 					.label = label};
-	ft_lstadd(&table->data[index], (t_list*)node);
+	ft_lstadd((t_list**)&table->data[index], (t_list*)node);
 	return (index);
 }

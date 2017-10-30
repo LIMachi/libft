@@ -6,13 +6,13 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 07:41:53 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/17 08:34:33 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:38:42 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void ft_quicksort(int *data, int len)
+void	ft_quicksort(int *data, int len)
 {
 	int		pivot;
 	int		i;
@@ -26,7 +26,6 @@ void ft_quicksort(int *data, int len)
 	j = len - 1;
 	while (1)
 	{
-
 		while (data[i] < pivot)
 			++i;
 		while (data[j] > pivot)
