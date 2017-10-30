@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/03/19 08:29:07 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/17 08:43:45 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,8 @@
 # else
 #  define EXIT(v) return (v)
 # endif
+
+# define _
 
 /*
 ** optimisation flags to replace code with macro, assembler or other code
@@ -1345,5 +1347,19 @@ void					ft_putnbr_bin_fd(unsigned long nbr, int fd);
 void					ft_putnbr_bin(unsigned long nbr);
 
 __int128_t				ft_pow10_i128(unsigned p);
+
+long long				ft_strtoll(const char *nptr, char **endptr, int base);
+
+# define NUINTMASK (((unsigned long long)-1) << (sizeof(unsigned int) << 3))
+# define SLLMASK (1ull << ((sizeof(unsigned long long) << 3) - 1))
+# define SMASK (1u << ((sizeof(unsigned) << 3) - 1))
+# define S128MASK (*(__uint128_t*)(unsigned long long[2]){0, 1ull << 63})
+
+int						ft_eval_int_ll(unsigned long long v);
+void					ft_quicksort(int *data, int len);
+void					ft_memquicksort(void **data, int len,
+							int (*cmp)(void *, void *));
+size_t					*ft_memindexes(void **data, void **order,
+						int (*equal)(void *a, void *b), size_t size);
 
 #endif
