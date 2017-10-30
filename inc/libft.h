@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/03/19 08:29:07 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/10/23 11:54:02 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,8 @@
 # else
 #  define EXIT(v) return (v)
 # endif
+
+# define _
 
 /*
 ** optimisation flags to replace code with macro, assembler or other code
@@ -758,6 +760,21 @@ typedef struct			s_xorshift1024star
 	unsigned long long	s[16];
 }						t_xorshift1024star;
 
+typedef struct			s_llist
+{
+	void				*data;
+	t_list				*next;
+	size_t				content_size;
+	char				*label;
+}						t_llist;
+
+typedef struct			s_hashtable
+{
+	size_t				size;
+	t_llist				**data;
+	size_t				(*hasher)(char*, size_t);
+}						t_hashtable;
+
 # define TIME_DEFAULT_WEEKDAY_0 "Sunday"
 # define TIME_DEFAULT_WEEKDAY_1 "Monday"
 # define TIME_DEFAULT_WEEKDAY_2 "Tuesday"
@@ -947,6 +964,21 @@ t_2list					*ft_2lstdelbot(t_2list *lst, void (*del)(void *,
 										size_t));
 t_2list					*ft_2lstdelnode(t_2list *lst, void (*del)(void *,
 										size_t));
+
+/*
+** hashtable related functions
+*/
+
+size_t					ft_default_hasher(char *label, size_t max);
+t_hashtable				ft_hashtable(size_t size,
+									size_t (*hasher)(char*, size_t));
+size_t					ft_hashtable_insert(t_hashtable *table,
+									char *label, void *data, size_t data_size);
+t_list					*ft_hashtable_get(t_hashtable *table, char *label);
+t_list					*ft_hashtable_get_all(t_hashtable *table, char *label);
+void					ft_hashtable_destroy(t_hashtable *table,
+										void (*del)(char *, void *, size_t));
+int						ft_hashtable_remove(t_hashtable *table, char *label);
 
 /*
 ** table related functions
@@ -1345,5 +1377,19 @@ void					ft_putnbr_bin_fd(unsigned long nbr, int fd);
 void					ft_putnbr_bin(unsigned long nbr);
 
 __int128_t				ft_pow10_i128(unsigned p);
+
+long long				ft_strtoll(const char *nptr, char **endptr, int base);
+
+# define NUINTMASK (((unsigned long long)-1) << (sizeof(unsigned int) << 3))
+# define SLLMASK (1ull << ((sizeof(unsigned long long) << 3) - 1))
+# define SMASK (1u << ((sizeof(unsigned) << 3) - 1))
+# define S128MASK (*(__uint128_t*)(unsigned long long[2]){0, 1ull << 63})
+
+int						ft_eval_int_ll(unsigned long long v);
+void					ft_quicksort(int *data, int len);
+void					ft_memquicksort(void **data, int len,
+							int (*cmp)(void *, void *));
+size_t					*ft_memindexes(void **data, void **order,
+						int (*equal)(void *a, void *b), size_t size);
 
 #endif
