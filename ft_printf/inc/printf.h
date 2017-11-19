@@ -6,7 +6,7 @@
 /*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2017/02/08 18:26:23 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/11/19 13:31:51 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define LESS (1 << 2)
 # define MORE (1 << 3)
 # define SPACE (1 << 4)
+# define FD_STDERR 2
+# define FD_STDOUT 1
+# define FD_STDIN 0
 
 typedef	struct	s_penv
 {
@@ -34,6 +37,7 @@ typedef	struct	s_penv
 	int		pos;
 	int		ret;
 	int		err;
+	int		fd;
 }				t_penv;
 
 void			push_buff(char c, t_penv *env);

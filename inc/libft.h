@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:28:53 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/11/19 13:36:56 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@
 /*
 ** # include <sys/stat.h>
 */
+
+# define FD_STDERR 2
+# define FD_STDOUT 1
+# define FD_STDIN 0
 
 # ifdef S_IDEFAULT
 #  undef S_IDEFAULT
@@ -1318,6 +1322,7 @@ char					*ft_pwd(void);
 char					*ft_path_name(char *path);
 
 extern int				ft_printf(const char *format, ...);
+extern int				ft_dprintf(int fd, const char *format, ...);
 
 int						ft_isinset(const char c, const char *set);
 size_t					ft_strcspn(const char *str, const char *reject);

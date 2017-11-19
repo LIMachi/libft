@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 20:28:37 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:54:05 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/11/03 18:22:53 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@
 #   define __SIZEOF_INTMAX_T__ (sizeof(__INTMAX_TYPE__))
 #  endif
 # endif
+
+# define __T_INTMIN	(-1ull >> ((sizeof(unsigned long long) - sizeof(int)) << 3))
+# define INTMIN		((int)__T_INTMIN)
+# define INTMAX		((int)__T_INTMIN >> 1)
 
 # define TSHORT_BIT	((__SHRT_MAX__ << 1) | 1)
 # define TINT_BIT	((__INT_MAX__ << 1) | 1)

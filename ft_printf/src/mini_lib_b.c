@@ -6,7 +6,7 @@
 /*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2017/02/01 15:01:08 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/11/19 13:32:11 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push_buff(char c, t_penv *env)
 	}
 	else
 	{
-		ft_void(write(1, env->buffer, BUFF_SIZE));
+		ft_void(write(env->fd, env->buffer, BUFF_SIZE));
 		env->ret += env->pos;
 		env->pos = 0;
 		push_buff(c, env);
