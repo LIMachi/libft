@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 12:41:18 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/11/19 14:41:21 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/11/19 15:15:23 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		ft_getopt_base_longopt(int argc, char **argv, t_getopt_env *env,
 		if (!ft_strncmp(env->longopts[op].name, env->nextchar,
 				end - env->nextchar))
 			break ;
-	if (env->longopts[++op].name == NULL)
+	if (env->longopts[op].name == NULL)
 	{
 		if (argv[env->optind][1] == '-' ||
 			ft_strchr(env->optstring, *env->nextchar) == NULL)
