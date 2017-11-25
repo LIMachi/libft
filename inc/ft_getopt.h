@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 12:39:41 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/11/19 14:39:02 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/11/25 16:40:34 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ int					ft_getopt_base_init(int argc, char **argv,
 int					ft_getopt_base_longopt(int argc, char **argv,
 										t_getopt_env *env, char *prefix);
 
-int					ft_getopt_base(int argc, char **argv, t_getopt_env *env);
+int					ft_getopt(int argc, char **argv, t_getopt_env *env);
 
 #endif

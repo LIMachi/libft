@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getopt_base.c                                   :+:      :+:    :+:   */
+/*   ft_getopt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 08:03:58 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/11/19 13:46:50 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/11/25 16:40:40 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int				sf_fak_la_norme(char **argv, t_getopt_env *env, char c)
 	return ('?');
 }
 
-int						ft_getopt_base(int argc, char **argv, t_getopt_env *env)
+int						ft_getopt(int argc, char **argv, t_getopt_env *env)
 {
 	int		r;
 	char	c;
@@ -92,7 +92,7 @@ int						ft_getopt_base(int argc, char **argv, t_getopt_env *env)
 		return (sf_getopt_base_long(argc, argv, env, c));
 	if (t[1] == ':' && t[2] == ':')
 		_(*env->nextchar != '\0' ? env->optarg = _(++env->optind,
-				env->nextchar) : NULL, env->nextchar = NULL);
+			env->nextchar) : NULL, env->nextchar = NULL);
 	else if (t[1] == ':')
 		return (sf_getopt_base_opt(argc, argv, env, c));
 	return (c);
