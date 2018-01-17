@@ -6,21 +6,21 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 07:41:53 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:38:42 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:44:04 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_quicksort(int *data, int len)
+int64_t		*ft_quicksort(int64_t *data, int64_t len)
 {
-	int		pivot;
-	int		i;
-	int		j;
-	int		t;
+	int64_t		pivot;
+	int64_t		i;
+	int64_t		j;
+	int64_t		t;
 
 	if (len < 2)
-		return ;
+		return (data);
 	pivot = data[len / 2];
 	i = 0;
 	j = len - 1;
@@ -38,4 +38,5 @@ void	ft_quicksort(int *data, int len)
 	}
 	ft_quicksort(data + i, len - i);
 	ft_quicksort(data, i);
+	return (data);
 }

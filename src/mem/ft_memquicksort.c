@@ -6,13 +6,13 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 07:08:33 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:39:35 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:44:43 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_memquicksort(void **data, int len, int (*cmp)(void *, void *))
+void	**ft_memquicksort(void **data, int len, int (*cmp)(void *, void *))
 {
 	void	*pivot;
 	int		i;
@@ -20,7 +20,7 @@ void	ft_memquicksort(void **data, int len, int (*cmp)(void *, void *))
 	void	*t;
 
 	if (len < 2)
-		return ;
+		return (data);
 	pivot = data[len / 2];
 	i = 0;
 	j = len - 1;
@@ -38,4 +38,5 @@ void	ft_memquicksort(void **data, int len, int (*cmp)(void *, void *))
 	}
 	ft_memquicksort(data + i, len - i, cmp);
 	ft_memquicksort(data, i, cmp);
+	return (data);
 }

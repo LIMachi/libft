@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 23:15:33 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:22:37 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/17 22:56:43 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ inline static int	sf_get_base(char **end, int base)
 {
 	if (base == 0)
 	{
-		if (**end == '0')
+		if (**end == '0' && *(++*end))
 		{
-			if (*(++*end) == 'x' || **end == 'X')
+			if (**end == 'x' || **end == 'X')
 				return (_(++*end, 16));
-			if (*(++*end) == 'b' || **end == 'B')
+			if (**end == 'b' || **end == 'B')
 				return (_(++*end, 2));
 			return (8);
 		}

@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/11/19 13:36:56 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:44:23 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1391,8 +1391,8 @@ long long				ft_strtoll(const char *nptr, char **endptr, int base);
 # define S128MASK (*(__uint128_t*)(unsigned long long[2]){0, 1ull << 63})
 
 int						ft_eval_int_ll(unsigned long long v);
-void					ft_quicksort(int *data, int len);
-void					ft_memquicksort(void **data, int len,
+int64_t					*ft_quicksort(int64_t *data, int64_t len);
+void					**ft_memquicksort(void **data, int len,
 							int (*cmp)(void *, void *));
 size_t					*ft_memindexes(void **data, void **order,
 						int (*equal)(void *a, void *b), size_t size);
