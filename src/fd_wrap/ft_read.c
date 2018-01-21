@@ -22,7 +22,7 @@ ssize_t	ft_read(t_ft_fd *fd, void *buf, size_t count)
 
 	r = read(fd->fd, buf, count);
 	if (r < 0)
-		ft_error(0, "read call made by ft_read failled: ");
+		ft_error(0, "read call made by ft_read failed: ");
 	fd->pos += r;
 	return (r);
 }

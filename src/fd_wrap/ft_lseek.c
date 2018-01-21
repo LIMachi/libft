@@ -20,7 +20,7 @@ off_t				ft_lseek(t_ft_fd *fd, off_t offset, int whence)
 
 	off = lseek(fd->fd, offset, whence);
 	if (off < 0)
-		ft_error(0, "lseek call made by ft_lseek failled: ");
+		ft_error(0, "lseek call made by ft_lseek failed: ");
 	fd->pos = off;
 	return (off);
 }

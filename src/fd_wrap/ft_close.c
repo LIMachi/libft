@@ -15,9 +15,9 @@
 int	ft_close(t_ft_fd *fd)
 {
 	if (!fd || fd->path == NULL)
-		return (ft_error(EBADF, "ft_close call failled: ") - 1);
+		return (ft_error(EBADF, "ft_close call failed: ") - 1);
 	ft_free(fd->path);
 	if (close(fd->fd) == -1)
-		return (ft_error(0, "close call made by ft_close failled: ") - 1);
+		return (ft_error(0, "close call made by ft_close failed: ") - 1);
 	return (0);
 }

@@ -22,19 +22,19 @@ t_ft_fd	ft_reopen(t_ft_fd *fd)
 {
 	if (!fd || fd->path == NULL)
 	{
-		ft_error(EBADF, "ft_reopen call failled: ");
+		ft_error(EBADF, "ft_reopen call failed: ");
 		return ((t_ft_fd){-1, 0, NULL, 0, 0});
 	}
 	if (close(fd->fd) == -1)
 	{
-		ft_error(0, "close call made by ft_reopen failled: ");
+		ft_error(0, "close call made by ft_reopen failed: ");
 		return ((t_ft_fd){-1, 0, NULL, 0, 0});
 	}
 	if (fd->flags | O_CREAT)
 		fd->flags ^= O_CREAT;
 	if ((fd->fd = open(fd->path, fd->flags, fd->rights)) < 0)
 	{
-		ft_error(0, "open call made by reopen failled: ");
+		ft_error(0, "open call made by reopen failed: ");
 		ft_free(fd->path);
 		return ((t_ft_fd){-1, 0, NULL, 0, 0});
 	}

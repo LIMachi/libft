@@ -23,12 +23,12 @@ t_ft_fd	ft_open(const char *path, int flags, int rights)
 
 	if (path == NULL)
 	{
-		ft_error(EINVAL, "ft_open call failled: ");
+		ft_error(EINVAL, "ft_open call failed: ");
 		return ((t_ft_fd){-1, 0, NULL, 0, 0});
 	}
 	if ((fd = open(path, flags, rights)) < 0)
 	{
-		ft_error(0, "open call made by ft_open failled: ");
+		ft_error(0, "open call made by ft_open failed: ");
 		return ((t_ft_fd){-1, 0, NULL, 0, 0});
 	}
 	if ((tmp = ft_strdup(path)) == NULL)
