@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2018/01/16 18:44:23 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/21 05:32:37 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1255,6 +1255,7 @@ void					ft_queue_free(t_queue *queue);
 # define ERROR_CLEAR	4
 # define ERROR_PRINT	8
 # define ERROR_ERRNO	16
+# define ERROR_GET		32
 
 /*
 ** the following defines are single flags, they can't be mixed with standard

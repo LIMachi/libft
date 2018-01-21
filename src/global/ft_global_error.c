@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 20:14:49 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/12/19 01:09:19 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/21 05:33:28 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_global_error(int flag, long data)
 	static int	error = 0;
 	char		*tmp_str;
 
+	if (flag == ERROR_GET)
+		return (error);
 	if (flag == ERROR_SET || flag == ERROR_ERRNO)
 		error = data * (flag == ERROR_SET) |
 				errno * (flag == ERROR_ERRNO);
@@ -36,7 +38,7 @@ int	ft_global_error(int flag, long data)
 		else
 			ft_putendl_fd(strerror(error), 2);
 	}
-	EXIT(error);
+	return (error);
 }
 
 #else
@@ -45,6 +47,8 @@ int	ft_global_error(int flag, long data)
 {
 	static int	error = 0;
 
+	if (flag == ERROR_GET)
+		return (error);
 	error = flag == ERROR_SET ? data : error;
 	if (flag == ERROR_CLEAR)
 		error = 0;
@@ -63,7 +67,7 @@ int	ft_global_error(int flag, long data)
 			ft_putchar_fd('\n', 2);
 		}
 	}
-	EXIT(error);
+	return (error);
 }
 
 #endif
