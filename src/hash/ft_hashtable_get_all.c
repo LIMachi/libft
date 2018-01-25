@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 10:51:56 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:34:59 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/24 00:00:57 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 ** and return[2] is the "list" returned by ft_hashtable_get_all
 */
 
-static t_llist	**sf_park(t_llist *node, char *label)
+inline static t_llist	**sf_park(t_llist *node, char *label)
 {
 	static t_llist		*nodes[4];
 
@@ -54,7 +54,7 @@ static t_llist	**sf_park(t_llist *node, char *label)
 	return (nodes);
 }
 
-t_list			*ft_hashtable_get_all(t_hashtable *table, char *label)
+t_list					*ft_hashtable_get_all(t_hashtable *table, char *label)
 {
 	t_llist	**nodes;
 	size_t	index;

@@ -6,14 +6,16 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 10:42:35 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:29:08 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/24 00:12:04 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
 /*
-** free the content of table, but not table itself
+** free the content of table, but not table itself, del should not free the
+** label nor the pointer to the content itself but only subpointers in data
+** del can be NULL
 */
 
 void	ft_hashtable_destroy(t_hashtable *table,
@@ -31,8 +33,11 @@ void	ft_hashtable_destroy(t_hashtable *table,
 		node = table->data[i];
 		while (node != NULL)
 		{
-			del(node->label, node->data, node->data_size);
+			if (del)
+				del(node->label, node->data, node->data_size);
 			tmp = node->next;
+			ft_free(node->label);
+			ft_free(node->data);
 			ft_free(node);
 			node = tmp;
 		}

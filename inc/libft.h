@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2018/01/21 05:32:37 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/25 04:45:43 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -776,7 +776,7 @@ typedef struct			s_hashtable
 {
 	size_t				size;
 	t_llist				**data;
-	size_t				(*hasher)(char*, size_t);
+	size_t				(*hasher)(const char*, const size_t);
 }						t_hashtable;
 
 # define TIME_DEFAULT_WEEKDAY_0 "Sunday"
@@ -973,16 +973,17 @@ t_2list					*ft_2lstdelnode(t_2list *lst, void (*del)(void *,
 ** hashtable related functions
 */
 
-size_t					ft_default_hasher(char *label, size_t max);
+size_t					ft_default_hasher(const char *label, const size_t max);
 t_hashtable				ft_hashtable(size_t size,
-									size_t (*hasher)(char*, size_t));
+							size_t (*hasher)(const char*, const size_t));
 size_t					ft_hashtable_insert(t_hashtable *table,
-									char *label, void *data, size_t data_size);
+				const char *label, const void *data, const size_t data_size);
 t_list					*ft_hashtable_get(t_hashtable *table, char *label);
 t_list					*ft_hashtable_get_all(t_hashtable *table, char *label);
 void					ft_hashtable_destroy(t_hashtable *table,
 										void (*del)(char *, void *, size_t));
-int						ft_hashtable_remove(t_hashtable *table, char *label);
+int						ft_hashtable_remove(t_hashtable *table, char *label,
+							void (*del)(char *, void *, size_t));
 
 /*
 ** table related functions

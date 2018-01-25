@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 09:54:52 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/23 11:44:55 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/25 04:44:33 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** default hash function to be used by an hashtable if no hasher was found
 */
 
-size_t	ft_default_hasher(char *label, size_t max)
+size_t	ft_default_hasher(const char *label, const size_t max)
 {
 	int		i;
 	size_t	out;

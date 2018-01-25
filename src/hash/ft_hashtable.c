@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 09:13:46 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/10/30 16:26:57 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/25 05:06:53 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@
 **  exit(ERROR);
 */
 
-t_hashtable	ft_hashtable(size_t size, size_t (*hasher)(char*, size_t))
+t_hashtable	ft_hashtable(size_t size,
+						size_t (*hasher)(const char*, const size_t))
 {
 	if (size <= 0)
 		return ((t_hashtable){.size = 0, .data = NULL, .hasher = NULL});
 	return ((t_hashtable){
 		.size = size,
-		.data = ft_memalloc(size * sizeof(t_list*)),
+		.data = ft_memalloc(size * sizeof(t_llist*)),
 		.hasher = hasher
 	});
 }
