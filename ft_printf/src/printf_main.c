@@ -6,7 +6,7 @@
 /*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2017/11/19 13:31:18 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/26 02:51:30 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ int		ft_printf(const char *format, ...)
 	}
 	ft_void(write(1, env.buffer, env.pos));
 	va_end(ap);
+	return (env.ret + env.pos);
+}
+
+int		ft_vdprintf(int fd, const char *format, va_list va)
+{
+	char		*form;
+	t_penv		env;
+	int			i;
+
+	form = (char *)format;
+	prf_init(&env);
+	env.fd = fd;
+	i = 0;
+	while (form[i])
+	{
+		prf_loop(&env);
+		i = prf_main_b(form, &env, i, va);
+		if (i == -1)
+			return (-1);
+	}
+	ft_void(write(fd, env.buffer, env.pos));
 	return (env.ret + env.pos);
 }
 

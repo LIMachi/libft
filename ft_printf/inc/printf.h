@@ -6,13 +6,13 @@
 /*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2017/11/19 13:31:51 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/26 03:03:09 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
-# include <stdarg.h>
+
 # include <stdio.h>
 # include <unistd.h>
 # include <wchar.h>
@@ -45,6 +45,8 @@ int				prf_conv(char *format, int i, t_penv *env, va_list ap);
 int				char_chr(char c, char *chr);
 void			prf_conv_mod(t_penv *env, va_list ap);
 int				ft_printf(const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
+int				ft_vdprintf(int fd, const char *format, va_list va);
 int				prf_flag(char *form, int i, t_penv *env);
 void			prf_flag_sharp(t_penv *env);
 void			prf_flag_zero(t_penv *env);

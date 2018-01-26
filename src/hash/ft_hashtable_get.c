@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 09:51:07 by hmartzol          #+#    #+#             */
-/*   Updated: 2018/01/23 23:49:22 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/26 02:17:41 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** a return of NULL can either signal an error or the absence of searched label
 */
 
-t_list	*ft_hashtable_get(t_hashtable *table, char *label)
+t_llist	*ft_hashtable_get(t_hashtable *table, char *label)
 {
 	size_t	index;
 	t_llist	*node;
@@ -35,5 +35,5 @@ t_list	*ft_hashtable_get(t_hashtable *table, char *label)
 	node = table->data[index];
 	while (node != NULL && ft_strcmp(node->label, label))
 		node = node->next;
-	return ((t_list *)node);
+	return (node);
 }
