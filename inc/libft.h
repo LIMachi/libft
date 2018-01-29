@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2018/01/26 03:03:22 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/01/29 04:48:29 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1020,6 +1020,8 @@ int						ft_putnstr_fd(char *str, int n, int fd);
 */
 
 char					*ft_strcat(char *dst, const char *src);
+char					*ft_strgcat(int n, ...);
+char					*ft_strfacat(char *str1, char *str2);
 char					*ft_strchr(char *str, int c);
 void					ft_strclr(char *s);
 int						ft_strcmp(char *s1, char *s2);
