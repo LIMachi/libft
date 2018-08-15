@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 12:41:18 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/11/19 15:15:23 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/08/15 13:43:34 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ int		sf_getopt_base_longopt_1(int argc, char **argv, t_getopt_env *env,
 		if (env->opterr)
 			ft_dprintf(FD_STDERR,
 				"%s: option '%s%s' requires an argument\n",
-				argv[0], ptr[0], env->longopts[(int)ptr[2]].name);
-		env->optopt = env->longopts[(int)ptr[2]].val;
+				argv[0], ptr[0], env->longopts[(size_t)ptr[2]].name);
+		env->optopt = env->longopts[(size_t)ptr[2]].val;
 		return (env->optstring[0] == ':' ? ':' : '?');
 	}
 	if (env->longind != NULL)
-		*env->longind = (int)ptr[2];
-	if (env->longopts[(int)ptr[2]].flag != NULL)
+		*env->longind = (size_t)ptr[2];
+	if (env->longopts[(size_t)ptr[2]].flag != NULL)
 	{
-		*env->longopts[(int)ptr[2]].flag = env->longopts[(int)ptr[2]].val;
+		*env->longopts[(size_t)ptr[2]].flag = env->longopts[(size_t)ptr[2]].val;
 		return (0);
 	}
-	return (env->longopts[(int)ptr[2]].val);
+	return (env->longopts[(size_t)ptr[2]].val);
 }
 
 int		sf_getopt_base_longopt_0(int argc, char **argv, t_getopt_env *env,
@@ -44,21 +44,21 @@ int		sf_getopt_base_longopt_0(int argc, char **argv, t_getopt_env *env,
 	env->nextchar = NULL;
 	if (*ptr[1])
 	{
-		if (env->longopts[(int)ptr[2]].has_arg)
+		if (env->longopts[(size_t)ptr[2]].has_arg)
 			env->optarg = ptr[1] + 1;
 		else
 		{
 			if (env->opterr)
 				ft_dprintf(FD_STDERR,
 					"%s: option '%s%s' doesn't allow an argument\n",
-					argv[0], ptr[0], env->longopts[(int)ptr[2]].name);
-			env->optopt = env->longopts[(int)ptr[2]].val;
+					argv[0], ptr[0], env->longopts[(size_t)ptr[2]].name);
+			env->optopt = env->longopts[(size_t)ptr[2]].val;
 			return ('?');
 		}
 	}
-	else if (env->longopts[(int)ptr[2]].has_arg == 1)
+	else if (env->longopts[(size_t)ptr[2]].has_arg == 1)
 		sf_getopt_base_longopt_1(argc, argv, env, ptr);
-	return (env->longopts[(int)ptr[2]].val);
+	return (env->longopts[(size_t)ptr[2]].val);
 }
 
 int		ft_getopt_base_longopt(int argc, char **argv, t_getopt_env *env,

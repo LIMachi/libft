@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 12:39:41 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/11/25 16:40:34 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/08/15 13:23:30 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,24 @@
 
 typedef enum		e_getopt_ord
 {
-	REQUIRE_ORDER, PERMUTE, RETURN_IN_ORDER
+	REQUIRE_ORDER,
+	PERMUTE,
+	RETURN_IN_ORDER
 }					t_getopt_ord;
+
+typedef enum		e_getopt_has_arg
+{
+	NO = 0,
+	REQUIRED = 1,
+	OPTIONAL = 2
+}					t_getopt_has_arg;
 
 typedef struct		s_getopt_opt
 {
-	int				val;
-	char			*name;
-	int				has_arg;
-	int				*flag;
+	int					val;
+	char				*name;
+	t_getopt_has_arg	has_arg;
+	int					*flag;
 }					t_getopt_opt;
 
 typedef struct		s_getopt_env

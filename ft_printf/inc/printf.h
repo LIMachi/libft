@@ -6,7 +6,7 @@
 /*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2018/01/26 03:03:09 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/08/15 13:44:27 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <wchar.h>
+# include <stdarg.h>
 
 # define BUFF_SIZE 1024
 # define SHARP (1)
