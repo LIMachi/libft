@@ -342,7 +342,9 @@ typedef	union			u_ldouble16c
 # define MEM_G (MEM_M * MEM_K)
 # define MEM_T (MEM_G * MEM_K)
 # define BUFF_SIZE MEM_K
-# define PAGE_SIZE MEM_G
+# ifndef PAGE_SIZE
+#  define PAGE_SIZE MEM_G
+# endif
 
 /*
 ** debug and protection related defines
