@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 12:41:18 by hmartzol          #+#    #+#             */
-/*   Updated: 2018/08/15 13:43:34 by hmartzol         ###   ########.fr       */
+/*   Updated: 2018/08/23 17:20:23 by lee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,20 @@ int		ft_getopt_base_longopt(int argc, char **argv, t_getopt_env *env,
 		++end;
 	op = -1;
 	while (env->longopts[++op].name != NULL)
-		if (!ft_strncmp(env->longopts[op].name, env->nextchar,
+		if (ft_strlen(env->longopts[op].name) == (size_t)(end - env->nextchar)
+				&& !ft_strncmp(env->longopts[op].name, env->nextchar,
 				end - env->nextchar))
 			break ;
-	if (env->longopts[op].name == NULL)
+	if (env->longopts[op].name != NULL)
+		return (sf_getopt_base_longopt_0(argc, argv, env,
+				(char*[3]){prefix, end, (char*)(size_t)op}));
+	if (argv[env->optind][1] == '-' ||
+		ft_strchr(env->optstring, *env->nextchar) == NULL)
 	{
-		if (argv[env->optind][1] == '-' ||
-			ft_strchr(env->optstring, *env->nextchar) == NULL)
-		{
-			(void)(env->opterr ? ft_dprintf(FD_STDERR,
+		(void)(env->opterr ? ft_dprintf(FD_STDERR,
 	"%s: unrecognized option '%s%s'\n", argv[0], prefix, env->nextchar) : 0);
-			_(env->nextchar = NULL, ++env->optind);
-			return (_(env->optopt = 0, '?'));
-		}
-		return (-1);
+		_(env->nextchar = NULL, ++env->optind);
+		return (_(env->optopt = 0, '?'));
 	}
-	return (sf_getopt_base_longopt_0(argc, argv, env,
-			(char*[3]){prefix, end, (char*)(size_t)op}));
+	return (-1);
 }
