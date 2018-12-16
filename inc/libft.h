@@ -1456,5 +1456,6 @@ void					**ft_memquicksort(void **data, int len,
 size_t					*ft_memindexes(void **data, void **order,
 						int (*equal)(void *a, void *b), size_t size);
 void					*ft_clear(char *form, ...);
+t_bmp					*ft_bmp_default(void);
 
 #endif
