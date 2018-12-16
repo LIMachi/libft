@@ -15,7 +15,7 @@
 t_matrix	*ft_matrix_multply(const t_matrix *a, const t_matrix *b)
 {
 	t_matrix	*out;
-	t_point		pos;
+	t_int2		pos;
 	int			i;
 
 	if (a == NULL || b == NULL || a->size.x != b->size.y ||

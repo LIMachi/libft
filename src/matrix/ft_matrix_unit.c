@@ -15,7 +15,7 @@
 t_matrix	*ft_matrix_unit(const int size)
 {
 	t_matrix	*out;
-	t_point		pos;
+	t_int2		pos;
 
 	if (size < 1 || (out = (t_matrix*)ft_malloc(sizeof(t_matrix))) == NULL)
 		return (NULL);

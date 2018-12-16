@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix_add.c                                    :+:      :+:    :+:   */
+/*   ft_int2_difference.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/10/09 08:19:55 by hmartzol         ###   ########.fr       */
+/*   Created: 2016/07/15 09:05:19 by hmartzol          #+#    #+#             */
+/*   Updated: 2016/10/14 14:10:26 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-t_matrix	*ft_matrix_add(const t_matrix *a, const t_matrix *b)
+t_int2	ft_int2_difference(const t_int2 a, const t_int2 b)
 {
-	t_matrix	*out;
-	t_int2		pos;
-
-	if (a == NULL || b == NULL || !ft_int2_equal(a->size, b->size) ||
-					(out = ft_matrix_new(a->size.x, a->size.y)) == NULL)
-		return (NULL);
-	pos.y = -1;
-	while (++pos.y < a->size.y && (pos.x = -1))
-		while (++pos.x < a->size.x)
-			out->mat[pos.y][pos.x] = a->mat[pos.y][pos.x] +
-									b->mat[pos.y][pos.x];
-	return (out);
+	return ((t_int2){.x = ABS(a.x - b.x), .y = ABS(a.y - b.y)});
 }

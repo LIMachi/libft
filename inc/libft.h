@@ -384,7 +384,7 @@ typedef	union			u_ldouble16c
 ** math defines
 */
 
-# if !defined(_MATH_H) && !defined(FT_FLOAT_H)
+# if !defined(__MATH_H__) && !defined(FT_FLOAT_H)
 #  if LOCAL_ENDIAN == BIG_ENDIAN
 #   define __QNAN_BYTES		{0x7f, 0xc0, 0, 0}
 #  endif
@@ -415,40 +415,42 @@ typedef	union			u_ldouble16c
 #  define INFINITY	HUGE_VALF
 # endif
 
-# define M_E			2.71828182845904523536
-# define M_LOG2E		1.44269504088896340736
-# define M_LOG10E		0.43429448190325182765
-# define M_LN2			0.69314718055994530942
-# define M_LN10			2.30258509299404568402
-# define M_PI			3.14159265358979323846
-# define M_PI_2			1.57079632679489661923
-# define M_PI_4			0.78539816339744830962
-# define M_PI_180		0.01745329251994329547
-# define M_1_PI			0.31830988618379067154
-# define M_2_PI			0.63661977236758134308
-# define M_180_PI		57.29577951308232286464
-# define M_2_SQRTPI		1.12837916709551257390
-# define M_SQRT2		1.41421356237309504880
-# define M_SQRT1_2		0.70710678118654752440
-# define M_LOG10_2		0.30102999566398119523
-# define M_EL			2.718281828459045235360287471352662498L
-# define M_LOG2EL		1.442695040888963407359924681001892137L
-# define M_LOG10EL		0.434294481903251827651128918916605082L
-# define M_LN2L			0.693147180559945309417232121458176568L
-# define M_LN10L		2.302585092994045684017991454684364208L
-# define M_PIL			3.141592653589793238462643383279502884L
-# define M_PI_2L		1.570796326794896619231321691639751442L
-# define M_PI_4L		0.785398163397448309615660845819875721L
-# define M_PI_180L		0.017453292519943295769139146242365789L
-# define M_1_PIL		0.318309886183790671537767526745028724L
-# define M_2_PIL		0.636619772367581343075535053490057448L
-# define M_180_PIL		57.295779513082320876654618402312735270L
-# define M_2_SQRTPIL	1.128379167095512573896158903121545172L
-# define M_SQRT2L		1.414213562373095048801688724209698079L
-# define M_SQRT1_2L		0.707106781186547524400844362104849039L
-# define M_LOG10_2L		0.301029995663981195225646428359489448L
-# define RADIAN(x) (M_PI_180 * (x))
-# define DEGRE(x) (M_180_PI * (x))
+# if !defined(__MATH_H__)
+#  define M_E			2.71828182845904523536
+#  define M_LOG2E		1.44269504088896340736
+#  define M_LOG10E		0.43429448190325182765
+#  define M_LN2			0.69314718055994530942
+#  define M_LN10		2.30258509299404568402
+#  define M_PI			3.14159265358979323846
+#  define M_PI_2		1.57079632679489661923
+#  define M_PI_4		0.78539816339744830962
+#  define M_PI_180		0.01745329251994329547
+#  define M_1_PI		0.31830988618379067154
+#  define M_2_PI		0.63661977236758134308
+#  define M_180_PI		57.29577951308232286464
+#  define M_2_SQRTPI	1.12837916709551257390
+#  define M_SQRT2		1.41421356237309504880
+#  define M_SQRT1_2		0.70710678118654752440
+#  define M_LOG10_2		0.30102999566398119523
+#  define M_EL			2.718281828459045235360287471352662498L
+#  define M_LOG2EL		1.442695040888963407359924681001892137L
+#  define M_LOG10EL		0.434294481903251827651128918916605082L
+#  define M_LN2L		0.693147180559945309417232121458176568L
+#  define M_LN10L		2.302585092994045684017991454684364208L
+#  define M_PIL			3.141592653589793238462643383279502884L
+#  define M_PI_2L		1.570796326794896619231321691639751442L
+#  define M_PI_4L		0.785398163397448309615660845819875721L
+#  define M_PI_180L		0.017453292519943295769139146242365789L
+#  define M_1_PIL		0.318309886183790671537767526745028724L
+#  define M_2_PIL		0.636619772367581343075535053490057448L
+#  define M_180_PIL		57.295779513082320876654618402312735270L
+#  define M_2_SQRTPIL	1.128379167095512573896158903121545172L
+#  define M_SQRT2L		1.414213562373095048801688724209698079L
+#  define M_SQRT1_2L	0.707106781186547524400844362104849039L
+#  define M_LOG10_2L	0.301029995663981195225646428359489448L
+#  define RADIAN(x) (M_PI_180 * (x))
+#  define DEGRE(x) (M_180_PI * (x))
+# endif
 
 /*
 ** extended fd structure, used in wrapers ft_open, ft_close, ft_write, ft_read,
@@ -488,11 +490,11 @@ typedef int				(*t_int_func_undef)();
 ** structures of type coordinal points
 */
 
-typedef struct			s_point
+typedef struct			s_int2
 {
 	int					x;
 	int					y;
-}						t_point;
+}						t_int2;
 
 /*
 ** structure to manipulate complex numbers
@@ -516,16 +518,22 @@ typedef struct			s_quaternion
 	double				k;
 }						t_quaternion;
 
+typedef struct			s_double2
+{
+	double				x;
+	double				y;
+}						t_double2;
+
 /*
 ** structure to manipulate vectors and 3d coordinates
 */
 
-typedef struct			s_vector
+typedef struct			s_double3
 {
 	double				x;
 	double				y;
 	double				z;
-}						t_vector;
+}						t_double3;
 
 /*
 ** structure to manipulate nm size matrixes
@@ -534,7 +542,7 @@ typedef struct			s_vector
 typedef struct			s_matrix
 {
 	double				**mat;
-	t_point				size;
+	t_int2				size;
 }						t_matrix;
 
 /*
@@ -560,6 +568,53 @@ typedef struct			s_queue
 	unsigned int		tail;
 }						t_queue;
 
+# define BITMAPSIGNATURE1 ((WORD)(('M' << 8) | 'B'))
+# define BITMAPSIGNATURE2 ((WORD)(('A' << 8) | 'B'))
+
+/*
+** unsuported format
+*/
+
+# define BITMAPCOREHEADER 12
+# define OS21XBITMAPHEADER 12
+
+/*
+** supported format
+*/
+
+# define OS22XBITMAPHEADER 64
+# define OS22XBITMAPHEADERV 16
+# define BITMAPINFOHEADER 40
+# define BITMAPV2INFOHEADER 52
+# define BITMAPV3INFOHEADER 56
+
+/*
+** partially supported format
+*/
+
+# define BITMAPV4HEADER 108
+# define BITMAPV5HEADER 124
+
+/*
+** supported compression
+*/
+
+# define BI_RGB 0
+# define BI_BITFIELDS 3
+# define BI_ALPHABITFIELDS 6
+
+/*
+** unsupported compression
+*/
+
+# define BI_RLE8 1
+# define BI_RLE4 2
+# define BI_JPEG 4
+# define BI_PNG 5
+# define BI_CMYK 11
+# define BI_CMYKRLE8 12
+# define BI_CMYKRLE4 13
+
 /*
 ** stores the default alignement in a pile then set the alignement to 1
 ** changing the alignement might change the padding of struct/union/enum/etc
@@ -583,33 +638,33 @@ typedef struct			s_bitmap_file_header
 ** standard bitmap header
 */
 
-typedef struct			s_dib_header
+typedef struct			s_dib
 {
-	DWORD		dib_size;
-	LONG		width;
-	LONG		height;
-	WORD		planes;
-	WORD		bit_count;
-	DWORD		bit_compression;
-	DWORD		size_image;
-	LONG		x_pixels_meter;
-	LONG		y_pixels_meter;
-	DWORD		colors_in_tab;
-	DWORD		color_important;
-	DWORD		red_bmask;
-	DWORD		green_bmask;
-	DWORD		blue_bmask;
-	DWORD		alpha_bmask;
-	DWORD		color_space_type;
-	char		color_space_endpoint[36];
-	DWORD		gamma_red;
-	DWORD		gamma_green;
-	DWORD		gamma_blue;
-	DWORD		intent;
-	DWORD		icc_profile_data;
-	DWORD		icc_profile_size;
-	DWORD		reserved;
-}						t_dib_header;
+	DWORD				dib_size;
+	LONG				width;
+	LONG				height;
+	WORD				planes;
+	WORD				bit_per_pixel;
+	DWORD				compression;
+	DWORD				size_image;
+	LONG				x_pixels_meter;
+	LONG				y_pixels_meter;
+	DWORD				palette;
+	DWORD				color_important;
+	DWORD				red_bmask;
+	DWORD				green_bmask;
+	DWORD				blue_bmask;
+	DWORD				alpha_bmask;
+	DWORD				color_space_type;
+	char				color_space_endpoint[36];
+	DWORD				gamma_red;
+	DWORD				gamma_green;
+	DWORD				gamma_blue;
+	DWORD				intent;
+	DWORD				icc_profile_data;
+	DWORD				icc_profile_size;
+	DWORD				reserved;
+}						t_dib;
 
 /*
 ** restores the padding/alignement from the last call of #pragma pack(push)
@@ -617,27 +672,19 @@ typedef struct			s_dib_header
 
 # pragma pack(pop)
 
-/*
-** pair of bitmap header and raw data
-*/
-
-typedef struct			s_bitmap
+typedef struct			s_bmp_file
 {
-	t_dib_header		info;
-	unsigned char		*bmp;
-}						t_bitmap;
+	t_bitmap_file_header	head;
+	t_dib					dib;
+	uint32_t				*color_palette;
+	uint8_t					*data;
+}						t_bmp_file;
 
-/*
-** ubmp stands for uncompressed bitmap, size should contain the size in pixels
-** and data all the pixels ARGB code stored in a X + size.y * Y patern
-** (left to right and top to bottom)
-*/
-
-typedef	struct			s_ubmp
+typedef	struct			s_bmp
 {
-	t_point				size;
-	int					*data;
-}						t_ubmp;
+	t_int2				size;
+	uint32_t			data[0];
+}						t_bmp;
 
 /*
 ** set of polymorphic list objects, each have 4 data container common, and
@@ -1073,16 +1120,16 @@ char					*ft_readfile(int fd);
 ** coordinal points related functions
 */
 
-t_point					*ft_point_init(t_point *p, const int x, const int y);
-t_point					*ft_point_new(const int x, const int y);
-t_point					ft_point(const int x, const int y);
-t_point					ft_point_substract(const t_point a, const t_point b);
-t_point					ft_point_add(const t_point a, const t_point b);
-int						ft_point_equal(const t_point a, const t_point b);
-double					ft_point_magnitude(const t_point point);
-t_point					ft_point_difference(const t_point a, const t_point b);
-double					ft_point_distance(const t_point a, const t_point b);
-t_point					ft_point_middle(const t_point a, const t_point b);
+t_int2					*ft_int2_init(t_int2 *p, const int x, const int y);
+t_int2					*ft_int2_new(const int x, const int y);
+t_int2					ft_int2(const int x, const int y);
+t_int2					ft_int2_substract(const t_int2 a, const t_int2 b);
+t_int2					ft_int2_add(const t_int2 a, const t_int2 b);
+int						ft_int2_equal(const t_int2 a, const t_int2 b);
+double					ft_int2_magnitude(const t_int2 point);
+t_int2					ft_int2_difference(const t_int2 a, const t_int2 b);
+double					ft_int2_distance(const t_int2 a, const t_int2 b);
+t_int2					ft_int2_middle(const t_int2 a, const t_int2 b);
 
 /*
 ** math functions
@@ -1106,11 +1153,13 @@ double					ft_powd(double nbr, int exp);
 ** bitmap related functions
 */
 
-t_ubmp					*ft_bmp_to_ubmp(t_bitmap *bitmap);
-t_bitmap				*ft_bitmap_file_load(char *path);
-int						ft_bitmap_file_save(char *path, t_bitmap *bmp);
-t_bitmap				*ft_ubmp_to_bmp(t_ubmp *ubmp);
-void					ft_bmp_print_info(t_bitmap *bmp);
+t_bmp					*bmp_file_load(const char *path);
+
+/*
+** int						ft_bitmap_file_save(char *path, t_bitmap *bmp);
+** t_bitmap				*ft_ubmp_to_bmp(t_ubmp *ubmp);
+** void					ft_bmp_print_info(t_bitmap *bmp);
+*/
 
 /*
 ** wrapper functions for file acces
@@ -1124,33 +1173,33 @@ ssize_t					ft_read(t_ft_fd *fd, void *buf, size_t count);
 off_t					ft_lseek(t_ft_fd *fd, off_t offset, int whence);
 
 /*
-** vector (double3) functions
+** double3 (double3) functions
 */
 
-t_vector				ft_vector(const double x, const double y,
-													const double z);
-t_vector				ft_vector_negate(const t_vector v);
-t_vector				ft_vector_add(const t_vector a, const t_vector b);
-t_vector				ft_vector_substract(const t_vector a, const t_vector b);
-t_vector				ft_vector_scale(const t_vector v, const double s);
-double					ft_vector_magnitude(const t_vector v);
-t_vector				ft_vector_normalize(const t_vector v);
-double					ft_vector_distance(const t_vector a, const t_vector b);
-double					ft_vector_dot_product(const t_vector a,
-												const t_vector b);
-double					ft_vector_angle(const t_vector a, const t_vector b);
-t_vector				ft_vector_projection(const t_vector a,
-												const t_vector b);
-t_vector				ft_vector_cross_product(const t_vector a,
-												const t_vector b);
-t_vector				*ft_vector_new(const double x, const double y,
-																const double z);
-t_vector				*ft_vector_init(t_vector *vector, const double x,
-											const double y, const double z);
-int						ft_vector_equal(t_vector a, t_vector b);
-t_vector				ft_vector_difference(t_vector a, t_vector b);
-t_vector				ft_vector_middle(const t_vector a, const t_vector b);
-t_vector				ft_vector_from_a_to_b(t_vector a, t_vector b);
+t_double3				ft_double3(const double x, const double y,
+	const double z);
+t_double3				ft_double3_negate(const t_double3 v);
+t_double3				ft_double3_add(const t_double3 a, const t_double3 b);
+t_double3				ft_double3_substract(const t_double3 a, const t_double3 b);
+t_double3				ft_double3_scale(const t_double3 v, const double s);
+double					ft_double3_magnitude(const t_double3 v);
+t_double3				ft_double3_normalize(const t_double3 v);
+double					ft_double3_distance(const t_double3 a, const t_double3 b);
+double					ft_double3_dot_product(const t_double3 a,
+	const t_double3 b);
+double					ft_double3_angle(const t_double3 a, const t_double3 b);
+t_double3				ft_double3_projection(const t_double3 a,
+	const t_double3 b);
+t_double3				ft_double3_cross_product(const t_double3 a,
+	const t_double3 b);
+t_double3				*ft_double3_new(const double x, const double y,
+	const double z);
+t_double3				*ft_double3_init(t_double3 *vector, const double x,
+	const double y, const double z);
+int						ft_double3_equal(t_double3 a, t_double3 b);
+t_double3				ft_double3_difference(t_double3 a, t_double3 b);
+t_double3				ft_double3_middle(const t_double3 a, const t_double3 b);
+t_double3				ft_double3_from_a_to_b(t_double3 a, t_double3 b);
 
 /*
 ** matrix functions
@@ -1206,7 +1255,7 @@ t_quaternion			ft_quat_normalize(const t_quaternion q);
 double					ft_quat_dot_product(const t_quaternion a,
 											const t_quaternion b);
 t_quaternion			ft_quat_rotation_build(double angle,
-												const t_vector vector);
+												const t_double3 vector);
 int						ft_quat_equal(const t_quaternion a,
 									const t_quaternion b);
 
@@ -1216,9 +1265,9 @@ int						ft_quat_equal(const t_quaternion a,
 
 t_matrix				*ft_quat_rotation_to_matrix(t_matrix *mat,
 													t_quaternion q);
-t_vector				ft_matrix_multply_vector(const t_vector v,
+t_double3				ft_matrix_multply_vector(const t_double3 v,
 												const t_matrix *m);
-t_vector				*ft_matrix_multply_vector_array(t_vector *va,
+t_double3				*ft_matrix_multply_vector_array(t_double3 *va,
 										size_t size, const t_matrix *m);
 char					*ft_lsttostr(t_list *lst);
 
@@ -1404,5 +1453,6 @@ void					**ft_memquicksort(void **data, int len,
 							int (*cmp)(void *, void *));
 size_t					*ft_memindexes(void **data, void **order,
 						int (*equal)(void *a, void *b), size_t size);
+void					*ft_clear(char *form, ...);
 
 #endif

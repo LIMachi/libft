@@ -15,7 +15,7 @@
 t_matrix	*ft_matrix_turn(const t_matrix *matrix)
 {
 	t_matrix	*out;
-	t_point		pos;
+	t_int2		pos;
 
 	if (matrix == NULL || (out =
 		ft_matrix_new(matrix->size.y, matrix->size.x)) == NULL)

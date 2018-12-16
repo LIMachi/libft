@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix_add.c                                    :+:      :+:    :+:   */
+/*   ft_int2_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/10/09 08:19:55 by hmartzol         ###   ########.fr       */
+/*   Created: 2016/02/10 04:27:59 by hmartzol          #+#    #+#             */
+/*   Updated: 2016/12/18 23:52:04 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-t_matrix	*ft_matrix_add(const t_matrix *a, const t_matrix *b)
+t_int2	*ft_int2_new(const int x, const int y)
 {
-	t_matrix	*out;
-	t_int2		pos;
+	t_int2 *out;
 
-	if (a == NULL || b == NULL || !ft_int2_equal(a->size, b->size) ||
-					(out = ft_matrix_new(a->size.x, a->size.y)) == NULL)
+	if ((out = (t_int2*)ft_malloc(sizeof(t_int2))) == NULL)
 		return (NULL);
-	pos.y = -1;
-	while (++pos.y < a->size.y && (pos.x = -1))
-		while (++pos.x < a->size.x)
-			out->mat[pos.y][pos.x] = a->mat[pos.y][pos.x] +
-									b->mat[pos.y][pos.x];
+	out->x = x;
+	out->y = y;
 	return (out);
 }

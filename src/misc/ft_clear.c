@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix_add.c                                    :+:      :+:    :+:   */
+/*   ft_clear.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/10/09 08:19:55 by hmartzol         ###   ########.fr       */
+/*   Created: 2016/08/22 19:34:13 by hmartzol          #+#    #+#             */
+/*   Updated: 2016/12/18 23:30:16 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-t_matrix	*ft_matrix_add(const t_matrix *a, const t_matrix *b)
+void	*ft_clear(char *form, ...)
 {
-	t_matrix	*out;
-	t_int2		pos;
+	va_list	va;
+	void	*out;
 
-	if (a == NULL || b == NULL || !ft_int2_equal(a->size, b->size) ||
-					(out = ft_matrix_new(a->size.x, a->size.y)) == NULL)
-		return (NULL);
-	pos.y = -1;
-	while (++pos.y < a->size.y && (pos.x = -1))
-		while (++pos.x < a->size.x)
-			out->mat[pos.y][pos.x] = a->mat[pos.y][pos.x] +
-									b->mat[pos.y][pos.x];
+	out = NULL;
+	if (form == NULL)
+		return (out);
+	va_start(va, form);
+	while (*form != '\0')
+	{
+		if (*form == 'd')
+			close(va_arg(va, int));
+		else if (*form == 'p')
+			free(va_arg(va, void *));
+		else if (*form == 'r')
+			out = va_arg(va, void *);
+		++form;
+	}
+	va_end(va);
 	return (out);
 }

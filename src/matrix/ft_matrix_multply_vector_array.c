@@ -12,10 +12,10 @@
 
 #include <libft.h>
 
-t_vector		*ft_matrix_multply_vector_array(t_vector *va, size_t size,
+t_double3		*ft_matrix_multply_vector_array(t_double3 *va, size_t size,
 													const t_matrix *m)
 {
-	t_vector	v;
+	t_double3	v;
 
 	if (m == NULL || va == NULL || size == 0)
 		return (NULL);
@@ -24,7 +24,7 @@ t_vector		*ft_matrix_multply_vector_array(t_vector *va, size_t size,
 	while (size--)
 	{
 		v = va[size];
-		va[size] = (t_vector){
+		va[size] = (t_double3){
 			.x = v.x * m->mat[0][0] + v.y * m->mat[0][1] + v.z * m->mat[0][2],
 			.y = v.x * m->mat[1][0] + v.y * m->mat[1][1] + v.z * m->mat[1][2],
 			.z = v.x * m->mat[2][0] + v.y * m->mat[2][1] + v.z * m->mat[2][2]};

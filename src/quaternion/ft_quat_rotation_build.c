@@ -13,12 +13,12 @@
 #include <libft.h>
 
 /*
-** Normalize the vector if needed, math and logic optimised by me.
-** Return -42 in the r component if an error (null vector) occur
+** Normalize the double3 if needed, math and logic optimised by me.
+** Return -42 in the r component if an error (null double3) occur
 */
 
 t_quaternion			ft_quat_rotation_build(double angle,
-												const t_vector vector)
+												const t_double3 vector)
 {
 	double			t;
 	t_quaternion	out;

@@ -15,9 +15,9 @@
 t_matrix	*ft_matrix_substract(const t_matrix *a, const t_matrix *b)
 {
 	t_matrix	*out;
-	t_point		pos;
+	t_int2		pos;
 
-	if (a == NULL || b == NULL || !ft_point_equal(a->size, b->size) ||
+	if (a == NULL || b == NULL || !ft_int2_equal(a->size, b->size) ||
 					(out = ft_matrix_new(a->size.x, a->size.y)) == NULL)
 		return (NULL);
 	pos.y = -1;

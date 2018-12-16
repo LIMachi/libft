@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix_add.c                                    :+:      :+:    :+:   */
+/*   ft_double3_angle.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/10/09 08:19:55 by hmartzol         ###   ########.fr       */
+/*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
+/*   Updated: 2016/10/24 21:22:47 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-t_matrix	*ft_matrix_add(const t_matrix *a, const t_matrix *b)
+double			ft_double3_angle(const t_double3 a, const t_double3 b)
 {
-	t_matrix	*out;
-	t_int2		pos;
+	double	vec_a_mag;
 
-	if (a == NULL || b == NULL || !ft_int2_equal(a->size, b->size) ||
-					(out = ft_matrix_new(a->size.x, a->size.y)) == NULL)
-		return (NULL);
-	pos.y = -1;
-	while (++pos.y < a->size.y && (pos.x = -1))
-		while (++pos.x < a->size.x)
-			out->mat[pos.y][pos.x] = a->mat[pos.y][pos.x] +
-									b->mat[pos.y][pos.x];
-	return (out);
+	vec_a_mag = ft_double3_magnitude(a);
+	if (vec_a_mag == 0)
+		return (INFINITY);
+	return (ft_acos(ft_double3_dot_product(a, b) / (vec_a_mag * vec_a_mag)));
 }

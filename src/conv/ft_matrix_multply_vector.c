@@ -12,13 +12,13 @@
 
 #include <libft.h>
 
-t_vector		ft_matrix_multply_vector(const t_vector v, const t_matrix *m)
+t_double3		ft_matrix_multply_vector(const t_double3 v, const t_matrix *m)
 {
 	if (m == NULL)
 		return (v);
 	if (m->size.x != 3 || m->size.y != 3)
 		return (v);
-	return ((t_vector){
+	return ((t_double3){
 		.x = v.x * m->mat[0][0] + v.y * m->mat[0][1] + v.z * m->mat[0][2],
 		.y = v.x * m->mat[1][0] + v.y * m->mat[1][1] + v.z * m->mat[1][2],
 		.z = v.x * m->mat[2][0] + v.y * m->mat[2][1] + v.z * m->mat[2][2]});
