@@ -70,8 +70,8 @@ static inline t_bmp		*i_decompress(t_bmp_file f)
 		bpl += 4 - (bpl & 3);
 	while (++p.y < (int)f.dib.height && (p.x = -1))
 		while (++p.x < (int)f.dib.width)
-			out->data[p.x + (f.dib.height - p.y - 1) * f.dib.width]
-				= i_bytes(p, f, bpl);
+			out->data[p.x + (f.dib.height - p.y - 1) * f.dib.width] =
+				i_bytes(p, f, bpl);
 	if (f.color_palette)
 		free(f.color_palette);
 	free(f.data);

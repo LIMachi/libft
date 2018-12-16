@@ -79,7 +79,7 @@ int		ft_getopt_base_longopt(int argc, char **argv, t_getopt_env *env,
 	if (env->longopts[op].name != NULL)
 		return (sf_getopt_base_longopt_0(argc, argv, env,
 				(char*[3]){prefix, end, (char*)(size_t)op}));
-	if (argv[env->optind][1] == '-' ||
+		if (argv[env->optind][1] == '-' ||
 		ft_strchr(env->optstring, *env->nextchar) == NULL)
 	{
 		(void)(env->opterr ? ft_dprintf(FD_STDERR,

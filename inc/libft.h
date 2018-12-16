@@ -1180,11 +1180,13 @@ t_double3				ft_double3(const double x, const double y,
 	const double z);
 t_double3				ft_double3_negate(const t_double3 v);
 t_double3				ft_double3_add(const t_double3 a, const t_double3 b);
-t_double3				ft_double3_substract(const t_double3 a, const t_double3 b);
+t_double3				ft_double3_substract(const t_double3 a,
+	const t_double3 b);
 t_double3				ft_double3_scale(const t_double3 v, const double s);
 double					ft_double3_magnitude(const t_double3 v);
 t_double3				ft_double3_normalize(const t_double3 v);
-double					ft_double3_distance(const t_double3 a, const t_double3 b);
+double					ft_double3_distance(const t_double3 a,
+	const t_double3 b);
 double					ft_double3_dot_product(const t_double3 a,
 	const t_double3 b);
 double					ft_double3_angle(const t_double3 a, const t_double3 b);
