@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_flat_hash_map_delete.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 21:57:14 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/03/09 21:57:25 by hmartzol         ###   ########.fr       */
+/*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
+/*   Updated: 2018/01/29 04:48:29 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include <ft_flat_hash_map.h>
-#include <stdio.h>
 
-int	main(void)
+void	*ft_flat_hash_map_delete(t_fhm_map *map, void *key)
 {
-	t_fhm_map	map;
-	char		*data;
-
-	map = ft_flat_hash_map_create((t_fhm_hashfun)ft_basic_hash,
-		(t_fhm_cmpfun)ft_strcmp);
-	ft_flat_hash_map_insert(&map, "test", "1");
-	ft_flat_hash_map_insert(&map, "testsak", "2");
-	ft_flat_hash_map_insert(&map, "cool", "3");
-	data = ft_flat_hash_map_find(&map, "testsak");
-	printf("data: '%s'\n", data);
-	ft_flat_hash_map_destroy(&map);
-	return (0);
+	(void)map;
+	(void)key;
+	return (NULL);
 }
