@@ -25,6 +25,7 @@
 
 # ifdef __SSE2__
 #  include <emmintrin.h>
+#  include <immintrin.h>
 # else
 #  error "missing SSE2 processor instructions"
 # endif
@@ -43,6 +44,9 @@ typedef enum		e_fhm_control
 	FHM_FULL_MASK = 0b01111111
 }					t_fhm_control;
 
+# define I1280XFF _mm_cvtsi32_si128(0xFF)
+# define I128DEL _mm_cvtsi32_si128(FHM_DELETED)
+
 /*
 ** __m128i control -> t_fhm_control(char)[16]
 */
@@ -55,7 +59,7 @@ typedef struct		s_fhm_group
 
 struct				s_fhm_hash
 {
-	char			meta : 7;
+	size_t			meta : 7;
 	size_t			position : (__SIZEOF_SIZE_T__ << 3) - 7;
 };
 
@@ -95,5 +99,12 @@ void				*ft_flat_hash_map_delete(t_fhm_map *map, void *key);
 void				ft_flat_hash_map_destroy(t_fhm_map *map);
 
 size_t				ft_basic_hash(char *str, size_t tab_size);
+
+int					ft_flat_hash_map_iterate(t_fhm_map *map,
+												size_t *it,
+												void **key_retriever,
+												void **value_retriever);
+
+int					ft_flat_hash_map_clear(t_fhm_map *map);
 
 #endif

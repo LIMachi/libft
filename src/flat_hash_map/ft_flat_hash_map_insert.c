@@ -31,7 +31,7 @@ int	ft_flat_hash_map_insert(t_fhm_map *map, void *key, void *value)
 			while (i < 16)
 				if (match & (1 << i++))
 				{
-					((char *)&map->groups[gi].control)[i - 1] = hash.h.meta;
+					((char *)&map->groups[gi].control)[i - 1] = (char)hash.h.meta;
 					map->groups[gi].key[i - 1] = key;
 					map->values[gi * 16 + i - 1] = value;
 					++map->pair_count;
