@@ -19,6 +19,8 @@
 
 int	ft_flat_hash_map_clear(t_fhm_map *map)
 {
+	(void)map;
+	/*
 	size_t		i;
 	int			mmatch;
 	__m128i		control;
@@ -39,6 +41,6 @@ int	ft_flat_hash_map_clear(t_fhm_map *map)
 				--map->pair_count;
 			mmatch >>= 1;
 		}
-	}
+	}*/
 	return (0);
 }

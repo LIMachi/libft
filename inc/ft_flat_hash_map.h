@@ -39,13 +39,13 @@
 typedef enum		e_fhm_control
 {
 	FHM_EMPTY = 0b10000000,
-	FHM_DELETED = 0b11111110,
-	FHM_SENTINEL = 0b11111111,
+	FHM_DELETED = 0b11111111,
 	FHM_FULL_MASK = 0b01111111
 }					t_fhm_control;
 
 # define I1280XFF _mm_cvtsi32_si128(0xFF)
-# define I128DEL _mm_cvtsi32_si128(FHM_DELETED)
+# define I128DELETED _mm_cvtsi32_si128(FHM_DELETED)
+# define I128EMPTY _mm_cvtsi32_si128(FHM_EMPTY)
 
 /*
 ** __m128i control -> t_fhm_control(char)[16]
