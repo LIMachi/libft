@@ -20,9 +20,12 @@ t_fhm_map	ft_flat_hash_map_create(t_fhm_hashfun hash,
 
 	out = (t_fhm_map){.pair_count = 0, .nb_groups = FHM_BASE_SIZE,
 		.hashfun = hash, .cmpfun = cmp,
-		.groups = malloc(sizeof(t_fhm_group) * FHM_BASE_SIZE)};
-	if (out.groups == NULL)
+		.groups = malloc(sizeof(t_fhm_group) * FHM_BASE_SIZE),
+		.values = malloc(sizeof(void*) * FHM_BASE_SIZE)};
+	if (out.groups == NULL || out.values == NULL)
 	{
+		free(out.groups);
+		free(out.values);
 		out = (t_fhm_map){.groups = NULL, .nb_groups = 0, .cmpfun = NULL,
 			.hashfun = NULL, .pair_count = 0};
 		return (out);

@@ -15,4 +15,5 @@
 void				ft_flat_hash_map_destroy(t_fhm_map *map)
 {
 	free(map->groups);
+	free(map->values);
 }

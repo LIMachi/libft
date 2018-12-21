@@ -43,12 +43,6 @@ typedef enum		e_fhm_control
 	FHM_FULL_MASK = 0b01111111
 }					t_fhm_control;
 
-typedef struct		s_fhm_pair
-{
-	void			*key;
-	void			*data;
-}					t_fhm_pair;
-
 /*
 ** __m128i control -> t_fhm_control(char)[16]
 */
@@ -56,7 +50,7 @@ typedef struct		s_fhm_pair
 typedef struct		s_fhm_group
 {
 	__m128i			control;
-	t_fhm_pair		slot[16];
+	void			*key[16];
 }					t_fhm_group;
 
 struct				s_fhm_hash
@@ -82,6 +76,7 @@ typedef struct		s_fhm_map
 	t_fhm_cmpfun	cmpfun;
 	t_fhm_hashfun	hashfun;
 	t_fhm_group		*groups;
+	void			**values;
 }					t_fhm_map;
 
 t_fhm_map			ft_flat_hash_map_create(t_fhm_hashfun hash,

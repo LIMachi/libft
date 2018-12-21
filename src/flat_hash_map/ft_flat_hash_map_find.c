@@ -40,8 +40,8 @@ void	*ft_flat_hash_map_find(t_fhm_map *map, void *key)
 		i = -1;
 		while (++i < 16)
 			if (match & (1 << i)
-					&& __builtin_expect(!map->cmpfun(g.slot[i].key, key), 1))
-				return (g.slot[i].data);
+					&& __builtin_expect(!map->cmpfun(g.key[i], key), 1))
+				return (map->values[gi * 16 + i]);
 		if (__builtin_expect(match != 0b1111111111111111, 1))
 			return (NULL);
 		gi = (gi + 1) % map->nb_groups;

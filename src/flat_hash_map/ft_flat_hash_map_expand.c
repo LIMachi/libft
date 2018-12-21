@@ -21,9 +21,14 @@ int					ft_flat_hash_map_expand(t_fhm_map *map, int factor)
 
 	tmp = (t_fhm_map){.pair_count = 0, .nb_groups = map->nb_groups * factor,
 		.hashfun = map->hashfun, .cmpfun = map->cmpfun,
-		.groups = malloc(sizeof(t_fhm_group) * map->nb_groups * factor)};
-	if (tmp.groups == NULL)
+		.groups = malloc(sizeof(t_fhm_group) * map->nb_groups * factor),
+		.values = malloc(sizeof(void*) * map->nb_groups * factor)};
+	if (tmp.groups == NULL || tmp.values == NULL)
+	{
+		free(tmp.groups);
+		free(tmp.values);
 		return (-1);
+	}
 	i = -1;
 	while (++i < map->nb_groups)
 	{
@@ -32,8 +37,8 @@ int					ft_flat_hash_map_expand(t_fhm_map *map, int factor)
 		while (++j < 16)
 			if (match & (1 << i))
 				if (__builtin_expect(
-					ft_flat_hash_map_insert(&tmp, map->groups[i].slot[j].key,
-						map->groups[i].slot[j].data), 0))
+					ft_flat_hash_map_insert(&tmp, map->groups[i].key[j],
+						map->values[i * 16 + j]), 0))
 					return (-1);
 	}
 	ft_flat_hash_map_destroy(map);
