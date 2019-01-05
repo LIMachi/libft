@@ -100,7 +100,7 @@ static inline t_bmp		*i_bmp_file_load(int fd, t_bmp_file f)
 			return (ft_clear("dpp", fd, f.color_palette, f.data));
 	if ((f.data = (uint8_t*)malloc(f.head.file_size - f.head.offset)) == NULL
 		|| read(fd, f.data, f.head.file_size - f.head.offset)
-		< f.head.file_size - f.head.offset)
+		< (int)(f.head.file_size - f.head.offset))
 		return (ft_clear("dpp", fd, f.color_palette, f.data));
 	close(fd);
 	return (i_decompress(f));

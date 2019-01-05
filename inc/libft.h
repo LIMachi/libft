@@ -970,11 +970,15 @@ int						ft_isunix(int c);
 ** evaluation funstions
 */
 
+# ifdef __SIZEOF_INT128__
+
 size_t					ft_evaluate_b128_size(__uint128_t v);
 size_t					ft_evaluate_i128_size(__int128_t v);
 size_t					ft_evaluate_o128_size(__uint128_t v);
 size_t					ft_evaluate_u128_size(__uint128_t v);
 size_t					ft_evaluate_x128_size(__uint128_t v);
+
+# endif
 
 /*
 ** file tree related function
@@ -1440,14 +1444,19 @@ void					ft_put_double(double v);
 void					ft_putnbr_bin_fd(unsigned long nbr, int fd);
 void					ft_putnbr_bin(unsigned long nbr);
 
+# ifdef __SIZEOF_INT128__
+
 __int128_t				ft_pow10_i128(unsigned p);
+#  define S128MASK (*(__uint128_t*)(unsigned long long[2]){0, 1ull << 63})
+
+# endif
+
 
 long long				ft_strtoll(const char *nptr, char **endptr, int base);
 
 # define NUINTMASK (((unsigned long long)-1) << (sizeof(unsigned int) << 3))
 # define SLLMASK (1ull << ((sizeof(unsigned long long) << 3) - 1))
 # define SMASK (1u << ((sizeof(unsigned) << 3) - 1))
-# define S128MASK (*(__uint128_t*)(unsigned long long[2]){0, 1ull << 63})
 
 int						ft_eval_int_ll(unsigned long long v);
 int64_t					*ft_quicksort(int64_t *data, int64_t len);

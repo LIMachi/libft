@@ -51,11 +51,15 @@
 # define TSIZE_BIT __SIZE_MAX__
 # define TPTRDIFF_BIT ((__PTRDIFF_MAX__ << 1) | 1)
 
+# ifdef __SIZEOF_INT128__
+
 typedef union	u_i128
 {
 	__UINT64_TYPE__	u64[2];
 	__int128_t		i128;
 	__uint128_t		u128;
 }				t_i128;
+
+# endif
 
 #endif
