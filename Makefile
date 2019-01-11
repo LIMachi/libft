@@ -1,7 +1,6 @@
 include ../Makefiles/default_var.mk
 
 NAME := libft.a
-TEST_SRCS := ./main.c
 CFLAGS += -Ift_printf/inc
 
 ifeq ($(shell $(CC) -dM -E - < /dev/null | grep __SIZEOF_INT128__), )

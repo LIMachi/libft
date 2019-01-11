@@ -1451,7 +1451,6 @@ __int128_t				ft_pow10_i128(unsigned p);
 
 # endif
 
-
 long long				ft_strtoll(const char *nptr, char **endptr, int base);
 
 # define NUINTMASK (((unsigned long long)-1) << (sizeof(unsigned int) << 3))
